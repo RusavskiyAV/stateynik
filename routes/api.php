@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Api\ArticleController;
+use App\Http\Api\StatisticController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('like', [StatisticController::class, 'like']);
+Route::post('view', [StatisticController::class, 'view']);
+Route::post('comment', [ArticleController::class, 'comment']);

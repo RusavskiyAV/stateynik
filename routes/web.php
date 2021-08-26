@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [IndexController::class, 'index'])->name('index');
+
+Route::name('article.')->group(static function () {
+    Route::get('/articles', [ArticleController::class, 'index'])->name('index');
+    Route::get('/articles/{slug}', [ArticleController::class, 'view'])->name('view');
 });
